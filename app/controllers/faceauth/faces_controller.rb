@@ -8,18 +8,24 @@ module Faceauth
     end
 
     def create
-      @user = User.find_by_email(params[:user][:email])
+      @user = User.find_by_email(params[:email])
+      data = request.raw_post
+      tmp_file = "#{Rails.root}/tmp/test.png"
+      File.open(tmp_file, 'wb') do |f|
+        f.write(data)
+      end
+      image = MiniMagick::Image.open(tmp_file)
+      @user.last_sign_in_picture = image
       if @user.present?
-        @user.last_sign_in_picture = params[:user][:last_sign_in_picture]
-        if @user.save
-          Findface.api_key = '3DoSGoAs6zqo_f8-ipbRkm4ku7Br9d3t'
+        @user.save
+        Findface.api_key = '3DoSGoAs6zqo_f8-ipbRkm4ku7Br9d3t'
+        request_uri = "#{request.protocol}#{request.host}"
           begin  
             options = {
-              "photo1": @user.user_picture,
-              "photo2": params[:user][:last_sign_in_picture]
+              "photo1": request_uri + "#{@user.user_picture.url}",
+              "photo2": request_uri + "#{@user.last_sign_in_picture.url}"
             }
             response = Findface::Utility.verify options
-            puts "\n Verification Result: #{response.inspect}\n"
             if response["verified"]
               puts "SUCCESSFULLY LOGGED IN!"
               sign_in @user
@@ -34,7 +40,6 @@ module Faceauth
             puts "\n"
             puts e.message
           end
-        end
       end
     end
     

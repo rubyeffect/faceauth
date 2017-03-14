@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'mysql2', '~> 0.4.4'
   s.add_development_dependency 'findface', '~> 0.0.1'
   s.add_development_dependency 'jpeg_camera', "~> 1.3.2"
+  s.add_development_dependency 'mini_magick', "~> 4.6.1"
 end

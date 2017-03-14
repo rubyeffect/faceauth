@@ -2,3 +2,58 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+input {}
+
+.faceauth-signin-form {
+    margin: 1em;
+}
+
+#user_email {
+    width: 250px;
+}
+
+#camera {
+    display: inline-block;
+    background-color: #eee;
+    width: 600px;
+    height: 400px;
+    margin: 1em 0em 1em 0em;
+}
+
+#camera .placeholder {
+    padding: 0.5em;
+}
+
+#snapshots {
+    height: 150px;
+    margin: 0.5em 0;
+    padding: 3px;
+    border: 1px solid white;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#snapshots canvas,
+#snapshots img {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    height: 100%;
+    margin-left: 3px;
+    border: 3px solid transparent;
+}
+
+#snapshots .selected {
+    border: 3px solid #000;
+}
+
+button,
+#upload_status,
+#upload_result,
+#loader {
+    margin: 0.5em;
+}
