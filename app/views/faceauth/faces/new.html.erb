@@ -1,13 +1,11 @@
 
 <div class="faceauth-signin-form">
-  <div class="alert alert-info">
-    <strong>Info:</strong> Please ensure to have proper lighting in your environment before taking a snap.
-  </div>
+  <strong>Note:</strong> Please ensure to have proper lighting in your environment before taking a snap.
   <div id="camera_info" style="display:none;"></div>
   <div id="stream_stats" style="display:none;"></div>
   <div id="upload_status"></div>
   <div id="upload_result"></div>
-  Email: <input type="email" name="email" id="user_email"><br>
+  * Email: <input type="email" name="email" id="user_email"><br>
   <div id="camera">
     <div class="placeholder">
       Your browser does not support camera access.<br>
@@ -17,13 +15,13 @@
       It's free.
     </div>
   </div><br>
-  
-  <br>
   <button id="take_snapshots" class="btn btn-success">Take a snap</button>
   <button id="discard_snapshot" class="btn btn-danger">Discard snapshot</button>
-  <button id="upload_snapshot" class="btn btn-default">Sign In</button><br>
+  <button id="upload_snapshot" class="btn btn-default">Sign In</button>
+  <%=image_tag("/assets/faceauth/loader.gif", id: "upload_loader", style: "display:none;")%>
+  <br>
   <!-- <button id="show_stream" class="btn btn-default">Show stream</button><br>-->
   <div id="snapshots"></div>
 
-  <%#=image_tag("/assets/faceauth/loader.gif")%>
+  
 </div>

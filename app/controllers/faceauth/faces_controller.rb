@@ -20,28 +20,26 @@ module Faceauth
         @user.save
         Findface.api_key = Faceauth.findface_api_key
         request_uri = "#{request.protocol}#{request.host}"
-          begin  
-            options = {
-              "photo1": request_uri + "#{@user.send(Faceauth.signup_picture_column).url}",
-              "photo2": request_uri + "#{@user.send(Faceauth.signin_picture_column).url}"
-            }
-            response = Findface::Utility.verify options
-            if response["verified"]
-              puts "SUCCESSFULLY LOGGED IN!"
-              Faceauth.redirect_url
-            else
-              puts "INVALID LOG IN DETAILS"
-              puts "\n Verification Result: #{response.inspect}\n"
-            end
-          rescue Findface::Error => e
-            # Exception handling
-            # e.parsed_response gives a response hash of the error response sent by Findface cloud API
-            puts e.parsed_response
-            puts "\n"
-            puts e.message
+        begin  
+          options = {
+            "photo1": request_uri + "#{@user.send(Faceauth.signup_picture_column).url}",
+            "photo2": request_uri + "#{@user.send(Faceauth.signin_picture_column).url}"
+          }
+          @response = Findface::Utility.verify options
+          puts "\n RESPONSE:: \n #{@response.inspect} \n \n"
+          if @response["verified"]
+            puts "SUCCESSFULLY LOGGED IN!"
+            Faceauth.redirect_url
           end
+        rescue Findface::Error => e
+          # Exception handling
+          # e.parsed_response gives a response hash of the error response sent by Findface cloud API
+          puts e.parsed_response
+          puts "\n"
+          puts e.message
+          render html: "Verification Failed. Please try again!"  
+        end
       end
     end
-    
   end
 end

@@ -63,32 +63,26 @@ $(function() {
             email_value = $("#user_email").val();
             if (email_value != undefined && isEmail(email_value)) {
                 if (snapshot != undefined) {
+                    $("#upload_loader").show();
                     snapshot.upload({ api_url: api_url + "?email=" + email_value }).done(upload_done).fail(upload_fail);
                 } else {
+                    $("#upload_loader").hide();
                     generate_validation_messages("Snapshot is missing! Please take a snap & try again");
                 }
             } else {
+                $("#upload_loader").hide();
                 generate_validation_messages("Email is not invalid.");
             }
         };
 
-        function generate_validation_messages(message) {
-            $("#upload_result").html(message);
-            $("#upload_snapshot").prop("disabled", false);
-            $("#upload_result").addClass("alert alert-danger");
-            hide_alerts();
-        }
-
-        function isEmail(email) {
-            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            return regex.test(email);
-        }
-
         var upload_done = function(response) {
             $("#upload_snapshot").prop("disabled", false);
             $("#loader").hide();
-            $("#upload_status").html("Upload successful");
+            // $("#upload_status").html("Status:");
             $("#upload_result").html(response);
+            $("#upload_loader").hide();
+            $("#upload_result").addClass("alert alert-danger");
+            hide_alerts();
         };
 
         var upload_fail = function(code, error, response) {
@@ -96,6 +90,7 @@ $(function() {
             $("#loader").hide();
             $("#upload_status").html("Upload failed with status " + code + " (" + error + ")");
             $("#upload_result").html(response);
+            $("#upload_loader").hide();
         };
 
         var discard_snapshot = function() {
@@ -113,6 +108,8 @@ $(function() {
                 }
                 element.data("snapshot").discard();
                 element.hide("slow", function() { $(this).remove() });
+            } else {
+                generate_validation_messages("Please select a snapshot to discard.");
             }
 
         };
@@ -126,7 +123,7 @@ $(function() {
         };
 
         var hide_snapshot_controls = function() {
-            $("#discard_snapshot, #upload_snapshot, #api_url").hide();
+            $("#discard_snapshot, #api_url").hide();
             $("#upload_result, #upload_status").html("");
             $("#show_stream").hide();
         };
@@ -154,6 +151,18 @@ $(function() {
             $(".alert").fadeTo(2000, 500).slideUp(500, function() {
                 $(".alert").slideUp(500);
             });
+        }
+
+        var generate_validation_messages = function(message) {
+            $("#upload_result").html(message);
+            $("#upload_snapshot").prop("disabled", false);
+            $("#upload_result").addClass("alert alert-danger");
+            hide_alerts();
+        }
+
+        var isEmail = function(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
         }
 
 
