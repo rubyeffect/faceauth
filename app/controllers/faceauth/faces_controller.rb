@@ -2,34 +2,33 @@ require_dependency "faceauth/application_controller"
 
 module Faceauth
   class FacesController < ApplicationController
-
+    MODEL = Faceauth.model_name.camelize.constantize
     def new
-      @user = User.new
+      @user = MODEL.new
     end
 
     def create
-      model_name = Faceauth.model_name.parameterize.underscore.to_sym
-      @user = User.find_by_email(params[:email])
+      @user = MODEL.find_by(Faceauth.email_column => params[:email])
       data = request.raw_post
       tmp_file = "#{Rails.root}/tmp/test.png"
       File.open(tmp_file, 'wb') do |f|
         f.write(data)
       end
       image = MiniMagick::Image.open(tmp_file)
-      @user.last_sign_in_picture = image
+      @user.send("#{Faceauth.signin_picture_column}=",image)
       if @user.present?
         @user.save
-        Findface.api_key = '3DoSGoAs6zqo_f8-ipbRkm4ku7Br9d3t'
+        Findface.api_key = Faceauth.findface_api_key
         request_uri = "#{request.protocol}#{request.host}"
           begin  
             options = {
-              "photo1": request_uri + "#{@user.user_picture.url}",
-              "photo2": request_uri + "#{@user.last_sign_in_picture.url}"
+              "photo1": request_uri + "#{@user.send(Faceauth.signup_picture_column).url}",
+              "photo2": request_uri + "#{@user.send(Faceauth.signin_picture_column).url}"
             }
             response = Findface::Utility.verify options
             if response["verified"]
               puts "SUCCESSFULLY LOGGED IN!"
-              sign_in @user
+              Faceauth.redirect_url
             else
               puts "INVALID LOG IN DETAILS"
               puts "\n Verification Result: #{response.inspect}\n"
