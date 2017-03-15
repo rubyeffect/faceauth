@@ -8,6 +8,7 @@ module Faceauth
     end
 
     def create
+      model_name = Faceauth.model_name.parameterize.underscore.to_sym
       @user = User.find_by_email(params[:email])
       data = request.raw_post
       tmp_file = "#{Rails.root}/tmp/test.png"
