@@ -1,8 +1,6 @@
-
 <div class="faceauth-signin-form">
+  <h2>Log in using your face</h2>
   <strong>Note:</strong> Please ensure to have proper lighting in your environment before taking a snap.
-  <div id="camera_info" style="display:none;"></div>
-  <div id="stream_stats" style="display:none;"></div>
   <div id="upload_status"></div>
   <div id="upload_result"></div>
   * Email: <input type="email" name="email" id="user_email"><br>
@@ -20,8 +18,5 @@
   <button id="upload_snapshot" class="btn btn-default">Sign In</button>
   <%=image_tag("/assets/faceauth/loader.gif", id: "upload_loader", style: "display:none;")%>
   <br>
-  <!-- <button id="show_stream" class="btn btn-default">Show stream</button><br>-->
   <div id="snapshots"></div>
-
-  
 </div>

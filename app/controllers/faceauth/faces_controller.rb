@@ -3,6 +3,7 @@ require_dependency "faceauth/application_controller"
 module Faceauth
   class FacesController < ApplicationController
     MODEL = Faceauth.model_name.camelize.constantize
+    skip_before_filter :verify_authenticity_token
     def new
       @user = MODEL.new
     end
@@ -15,30 +16,20 @@ module Faceauth
         f.write(data)
       end
       image = MiniMagick::Image.open(tmp_file)
-      @user.send("#{Faceauth.signin_picture_column}=",image)
       if @user.present?
+        @user.send("#{Faceauth.signin_picture_column}=",image)
         @user.save
-        Findface.api_key = Faceauth.findface_api_key
         request_uri = "#{request.protocol}#{request.host}"
-        begin  
-          options = {
-            "photo1": request_uri + "#{@user.send(Faceauth.signup_picture_column).url}",
-            "photo2": request_uri + "#{@user.send(Faceauth.signin_picture_column).url}"
-          }
-          @response = Findface::Utility.verify options
-          puts "\n RESPONSE:: \n #{@response.inspect} \n \n"
-          if @response["verified"]
-            puts "SUCCESSFULLY LOGGED IN!"
-            redirect_to main_app.try(Faceauth.redirect_url)
-          end
-        rescue Findface::Error => e
-          # Exception handling
-          # e.parsed_response gives a response hash of the error response sent by Findface cloud API
-          puts e.parsed_response
-          puts "\n"
-          puts e.message
-          render html: "Verification Failed. Please try again!"  
+        response = Faceauth::Authenticate.login(@user, request_uri)
+        if response["verified"]
+          @user.reload
+          sign_in(@user)
+          render json: {message: "Authentication Successful", status: "success", location: main_app.try(Faceauth.redirect_url)}
+        else
+          render json: {message: "Verification Failed. Please try again!", status: "failed"}
         end
+      else
+        render json: {message: "Sorry! System don't recognize you'", status: "failed"}
       end
     end
   end

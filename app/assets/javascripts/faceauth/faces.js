@@ -76,12 +76,18 @@ $(function() {
         };
 
         var upload_done = function(response) {
+            resp = JSON.parse(response);
             $("#upload_snapshot").prop("disabled", false);
             $("#loader").hide();
             // $("#upload_status").html("Status:");
-            $("#upload_result").html(response);
-            $("#upload_loader").hide();
-            $("#upload_result").addClass("alert alert-danger");
+            if (resp["status"] == "success") {
+                window.location.replace(resp["location"]);
+            } else {
+                $("#upload_result").html(resp["message"]);
+                $("#upload_loader").hide();
+                $("#upload_result").addClass("alert alert-danger");
+            }
+
             hide_alerts();
         };
 
