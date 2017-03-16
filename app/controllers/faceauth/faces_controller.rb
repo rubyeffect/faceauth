@@ -29,7 +29,7 @@ module Faceauth
           puts "\n RESPONSE:: \n #{@response.inspect} \n \n"
           if @response["verified"]
             puts "SUCCESSFULLY LOGGED IN!"
-            Faceauth.redirect_url
+            redirect_to main_app.try(Faceauth.redirect_url)
           end
         rescue Findface::Error => e
           # Exception handling
