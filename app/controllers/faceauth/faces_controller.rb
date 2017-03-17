@@ -21,7 +21,7 @@ module Faceauth
         @user.save
         request_uri = "#{request.protocol}#{request.host}"
         response = Faceauth::Authenticate.login(@user, request_uri)
-        if response["verified"]
+        if !response.blank? && response["verified"]
           @user.reload
           sign_in(@user)
           render json: {message: "Authentication Successful", status: "success", location: main_app.try(Faceauth.redirect_url)}
@@ -29,7 +29,7 @@ module Faceauth
           render json: {message: "Verification Failed. Please try again!", status: "failed"}
         end
       else
-        render json: {message: "Sorry! System don't recognize you'", status: "failed"}
+        render json: {message: "Sorry! System didn't recognize you'", status: "failed"}
       end
     end
   end

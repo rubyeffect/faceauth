@@ -8,8 +8,7 @@ module Faceauth
             "photo1": request_uri + "#{user.send(Faceauth.signup_picture_column).url}",
             "photo2": request_uri + "#{user.send(Faceauth.signin_picture_column).url}"
           }
-          response = Findface::Utility.verify options
-          return response
+          return Findface::Utility.verify options
         rescue Findface::Error => e
           puts e.parsed_response
           puts "\n"
