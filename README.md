@@ -99,6 +99,11 @@ config.signin_picture_column = :custom_column_name
 
 Start using the gem 🙂
 
+
+Note:
+
+In development environment please use (ngrok)[https://ngrok.com/] with https protocol. As per the security standards & protocols access to microphones & webcames are are allowed only through secure channels only.
+
 ## Customization
 
 We built Faceuth to help you quickly integrate contact form in your application. However, we don't want to be in your way when you need to customize it.
