@@ -1,9 +1,6 @@
 # Faceauth
 Faceauth gem is a simple plugin which allows users to sign into any rails based web application using their face. Primarily supporting devise authentication system (Please refer [Devise gem](https://github.com/plataformatec/devise)), this gem uses [FindFace Cloud API](https://findface.pro/en/) to run the matches & authenticate users. This is implemented from thought process of finding new ways of authenticating users eliminating need for users to remember so many passwords for various web applications they interact with.  
 
-## Usage
-How to use my plugin.
-
 ## Installation
 Add this line to your application's Gemfile:
 
@@ -50,6 +47,8 @@ Generate devise views:
 ```bash
 rails generate devise:views
 ```
+
+add the following in devise/shared/_links.html.erb file.
 
 ``` erb
 <%= link_to "Log in using your face", faceauth.new_session_path %><br />
