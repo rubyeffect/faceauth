@@ -124,12 +124,12 @@ $ rails generate faceuath:views -v form
 
 ## Todos
 
-1. Extending this functionality for other authentication plugin
+1. Extending this functionality for other authentication plugins.
 2. Support for ruby versions < 2.2.2 .
 3. Writing Test cases.
 4. Making signin process faster. i.e. The response time of Jpeg_camera gem we use to capture picture is slow. Need to make it faster such that it improves overall user experience. 
 5. User will be able to login by showing a hardcopy of photo instead of showing his face to webcam which allows successful authentication. Need to explore on this to avoid this scneario to make it more efficient and authentic. 
-6. Need to check system behaviour in assuming Twins in users base and find fixes for any issues observed. Right now it depends up on findface face reconginition system. 
+6. Need to check system behaviour in assuming Twins in users base and find fixes for any issues observed. Right now it depends upon findface API's face reconginition system. 
 7. Adding security question system will eliminate the use cases 5 & 6 after immediate positive verification, however this addition should not hammer user experience. Need to design very intutive & flexible user sign in flow. 
   
 
