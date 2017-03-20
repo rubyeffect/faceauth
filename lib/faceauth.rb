@@ -1,6 +1,7 @@
 require "faceauth/engine"
 require "faceauth/configuration"
 require "faceauth/authenticate"
+require "faceauth/gem_dependencies"
 
 module Faceauth
 	extend Configuration

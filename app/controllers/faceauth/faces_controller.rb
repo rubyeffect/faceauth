@@ -16,7 +16,7 @@ module Faceauth
         f.write(data)
       end
       image = MiniMagick::Image.open(tmp_file)
-      if @user.present?
+      if @user.present? && !@user.send("#{Faceauth.signup_picture_column}").blank?
         @user.send("#{Faceauth.signin_picture_column}=",image)
         @user.save
         request_uri = "#{request.protocol}#{request.host}"

@@ -32,7 +32,7 @@ Add the following to your routes.rb file:
 mount Faceauth::Engine, at: "/"
 ```
 
-(NOTE: You may mount the server at any path, not just "/")
+(**Note:** You may mount the server at any path, not just "/")
 
 Add two columns using migration to your devise user model in rails application. Example for column names: user_picture, last_sign_in_picture
 
@@ -42,7 +42,7 @@ And run migrations:
 $ rake db:migrate
 ```
 
-Generate devise views:
+Generate devise views: (Assumption that you are already using devise gem for authentication platform in your rails application)
 
 ```bash
 rails generate devise:views
@@ -53,7 +53,7 @@ add the following in devise/shared/_links.html.erb file.
 ``` erb
 <%= link_to "Log in using your face", faceauth.new_session_path %><br />
 ```
-(NOTE: Ensure to setup process of recording user picture during signup process and store details in :user_picture column.)
+(**Note:** Ensure to setup process of recording user picture during signup process and store details in :user_picture column.)
 
 Next, setup the configuration:
 
@@ -71,12 +71,12 @@ Faceauth.configuration do |config|
 end 
 ```
 
-The key options available are:
+The options available are:
 
 | Option                    | Description                                                                         | Default Values                              |
 | -----------------         | -------------------------------                                                     | --------------------------------            |
 | `model_name`              | String to set devise user model .                                                   | 'user'                                      |
-| `uploader_name`           | String to define attachments plugin used to store images.                           | 'carrierwave'                               |
+| `uploader_name`           | String to define attachments plugin used to store images.                           | 'carrierwave' or 'paperclip'                |
 | `redirect_url`            | String to provide location details for taking user after successful authentication. | 'root_path'                                 |
 | `findface_api_key`        | String to set Findface API Key.                                                     | 'Findface API key'                          |
 | `email_column`            | set column name where user email is stored                                          | :email                                      |
@@ -85,11 +85,13 @@ The key options available are:
 
 
 Ensure you have set 'findface_api_key' and 'redirect_url' in config/initializers/faceauth.rb
+
 ```ruby
 config.findface_api_key = "YOUR_API_KEY"
 config.redirect_url = "root_path" #By default, the option takes root_path of your rails application. 
 ```
 If you wish to pass your custom model name & column names, please set the names using
+
 ```ruby
 config.model_name = 'your_model_name' 
 config.signup_picture_column = :custom_column_name
@@ -99,9 +101,9 @@ config.signin_picture_column = :custom_column_name
 Start using the gem 🙂
 
 
-Note:
+**Note:**
 
-In development environment please use (ngrok)[https://ngrok.com/] with https protocol. As per the security standards & protocols access to microphones & webcames are are allowed only through secure channels only.
+In development environment please use [ngrok](https://ngrok.com/) with https protocol. As per the security standards & protocols access to microphones & webcames are are allowed only through secure channels only.
 
 ## Customization
 
@@ -120,6 +122,16 @@ you can pass a list of names to the generator with the `-v` flag.
 $ rails generate faceuath:views -v form
 ```
 
+## Todos
+
+1. Extending this functionality for other authentication plugin
+2. Support for ruby versions < 2.2.2 .
+3. Writing Test cases.
+4. Making signin process faster. i.e. The response time of Jpeg_camera gem we use to capture picture is slow. Need to make it faster such that it improves the user experience. 
+5. User will be able to login by showing a hardcopy of photo instead of showing his face to webcam which allows successful authentication. Need to explore on this to avoid this scneario to make it more efficient and authentic. 
+6. Need to check system behaviour in twins case. It depends up on findface face reconginition system. 
+7. Adding security question system will eliminate the use cases 5 & 6 after immediate positive verification, however this addition should not hamper user experience. Need to design very intutive & flexible user sign in flow. 
+  
 
 ## Contributing
 
@@ -127,12 +139,11 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 Please ensure to follow the following steps as standard practice to contribute:
 
-1. Fork it ( https://github.com/rubyeffect/conschedule/fork )
+1. Fork it ( https://github.com/rubyeffect/faceauth/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create a new Pull Request
-
 
 
 ## License
