@@ -32,7 +32,7 @@ Add the following to your routes.rb file:
 mount Faceauth::Engine, at: "/"
 ```
 
-(**Note:** You may mount the server at any path, not just "/")
+(**Note:** You may mount the server at any path, not just at "/")
 
 Add two columns using migration to your devise user model in rails application. Example for column names: user_picture, last_sign_in_picture
 
@@ -103,7 +103,7 @@ Start using the gem 🙂
 
 **Note:**
 
-In development environment please use [ngrok](https://ngrok.com/) with https protocol. As per the security standards & protocols access to microphones & webcames are are allowed only through secure channels only.
+In development environment please use [ngrok](https://ngrok.com/) with https protocol. As per the security standards & protocols access to microphones & webcames are allowed only through secure channel.
 
 ## Customization
 
@@ -127,10 +127,10 @@ $ rails generate faceuath:views -v form
 1. Extending this functionality for other authentication plugin
 2. Support for ruby versions < 2.2.2 .
 3. Writing Test cases.
-4. Making signin process faster. i.e. The response time of Jpeg_camera gem we use to capture picture is slow. Need to make it faster such that it improves the user experience. 
+4. Making signin process faster. i.e. The response time of Jpeg_camera gem we use to capture picture is slow. Need to make it faster such that it improves overall user experience. 
 5. User will be able to login by showing a hardcopy of photo instead of showing his face to webcam which allows successful authentication. Need to explore on this to avoid this scneario to make it more efficient and authentic. 
-6. Need to check system behaviour in twins case. It depends up on findface face reconginition system. 
-7. Adding security question system will eliminate the use cases 5 & 6 after immediate positive verification, however this addition should not hamper user experience. Need to design very intutive & flexible user sign in flow. 
+6. Need to check system behaviour in assuming Twins in users base and find fixes for any issues observed. Right now it depends up on findface face reconginition system. 
+7. Adding security question system will eliminate the use cases 5 & 6 after immediate positive verification, however this addition should not hammer user experience. Need to design very intutive & flexible user sign in flow. 
   
 
 ## Contributing
@@ -153,6 +153,9 @@ The gem is available as open source under the terms of the [MIT License](http://
 ## Authored by
 
 Sandeep Mallela a.k.a Sam (sandeep@rubyeffect.com)
+
+**Contributions:**
+
 Venkatesh Vasamasetti (venkatesh@rubyeffect.com)
 
 ## About RubyEffect
