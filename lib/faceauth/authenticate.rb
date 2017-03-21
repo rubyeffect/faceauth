@@ -6,7 +6,8 @@ module Faceauth
         begin  
           options = {
             "photo1": request_uri + "#{user.send(Faceauth.signup_picture_column).url}",
-            "photo2": request_uri + "#{user.send(Faceauth.signin_picture_column).url}"
+            "photo2": request_uri + "#{user.send(Faceauth.signin_picture_column).url}",
+            "threshold": 'strict'
           }
           return Findface::Utility.verify options
         rescue Findface::Error => e

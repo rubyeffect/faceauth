@@ -9,15 +9,15 @@ module Faceauth
     end
 
     def create
-      @user = MODEL.find_by(Faceauth.email_column => params[:email])
+      @user = MODEL.find_by(Faceauth.email_column.to_sym => params[:email])
       data = request.raw_post
       tmp_file = "#{Rails.root}/tmp/test.png"
       File.open(tmp_file, 'wb') do |f|
         f.write(data)
       end
       image = MiniMagick::Image.open(tmp_file)
-      if @user.present? && !@user.send("#{Faceauth.signup_picture_column}").blank?
-        @user.send("#{Faceauth.signin_picture_column}=",image)
+      if @user.present? && !@user.send("#{Faceauth.signup_picture_column.to_sym}").blank?
+        @user.send("#{Faceauth.signin_picture_column.to_sym}=", image)
         @user.save
         request_uri = "#{request.protocol}#{request.host}"
         response = Faceauth::Authenticate.login(@user, request_uri)

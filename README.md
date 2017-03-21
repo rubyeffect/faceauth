@@ -79,9 +79,9 @@ The options available are:
 | `uploader_name`           | String to define attachments plugin used to store images.                           | 'carrierwave' or 'paperclip'                |
 | `redirect_url`            | String to provide location details for taking user after successful authentication. | 'root_path'                                 |
 | `findface_api_key`        | String to set Findface API Key.                                                     | 'Findface API key'                          |
-| `email_column`            | set column name where user email is stored                                          | :email                                      |
-| `signup_picture_column`   | set column name where user picture is stored                                        | :user_picture                               |
-| `signin_picture_column`   | set column name where user picture is stored recorded from faceauth sign in page    | :last_sign_in_picture                       |
+| `email_column`            | set column name where user email is stored                                          | 'email'                                     |
+| `signup_picture_column`   | set column name where user picture is stored                                        | 'user_picture'                              |
+| `signin_picture_column`   | set column name where user picture is stored recorded from faceauth sign in page    | 'last_sign_in_picture'                      |
 
 
 Ensure you have set 'findface_api_key' and 'redirect_url' in config/initializers/faceauth.rb
@@ -129,7 +129,7 @@ $ rails generate faceuath:views -v form
 3. Writing Test cases.
 4. Making signin process faster. i.e. The response time of Jpeg_camera gem we use to capture picture is slow. Need to make it faster such that it improves overall user experience. 
 5. User will be able to login by showing a hardcopy of photo instead of showing his face to webcam which allows successful authentication. Need to explore on this to avoid this scneario to make it more efficient and authentic. 
-6. Need to check system behaviour in assuming Twins in users base and find fixes for any issues observed. Right now it depends upon findface API's face reconginition system. 
+6. Need to check system behaviour in assuming Twins in users base and find fixes for any issues observed.
 7. Adding security question system will eliminate the use cases 5 & 6 after immediate positive verification, however this addition should not hammer user experience. Need to design very intutive & flexible user sign in flow. 
   
 
@@ -166,6 +166,6 @@ Venkatesh Vasamasetti (venkatesh@rubyeffect.com)
 
 RubyEffect builds intuitive, live and elegant software that solves real world problems. We love open source and it's community.
 
-Liked this gem? You may also like the articles we post on our [blog](http://blog.rubyeffect.com). Please do check
+Liked this gem? You may also like the articles we post on our [blog](http://blog.rubyeffect.com). Please do check.
 
 We would love to work on your ideas and see them grow. Say hello @ http://rubyeffect.com/contact

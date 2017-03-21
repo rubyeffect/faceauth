@@ -20,8 +20,8 @@ Some setup you must do manually if you haven't yet:
   5. If you wish to pass your custom model name & column names, please set the names using
 
      # config.model_name = :your_model_name (Default is 'User')
-     # config.signup_picture_column = :custom_column_name (Default is ':user_picture')
-     # config.signin_picture_column = :custom_column_name (Default is ':last_sign_in_picture')
+     # config.signup_picture_column = "custom_column_name" (Default is 'user_picture')
+     # config.signin_picture_column = "custom_column_name" (Default is 'last_sign_in_picture')
 
   6. You can copy Faceauth views (for customization) to your app by running:
 
