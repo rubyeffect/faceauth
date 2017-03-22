@@ -1,5 +1,5 @@
 # Faceauth
-Faceauth gem is a simple plugin which allows users to sign into any rails based web application using their face. Primarily supporting devise authentication system (Please refer [Devise gem](https://github.com/plataformatec/devise)), this gem uses [FindFace Cloud API](https://findface.pro/en/) to run the matches & authenticate users. This is implemented from thought process of finding new ways of authenticating users eliminating need for users to remember so many passwords for various web applications they interact with.  
+Faceauth gem is a simple plugin which allows users to sign into any rails based web application using their face. Primarily supporting devise authentication (Please refer [Devise gem](https://github.com/plataformatec/devise)), this gem uses [FindFace Cloud API](https://findface.pro/en/) to run the face matches & authenticate users. This is aimed at simplifying the user authentication by eliminating the need to remember the passwords for multiple websites a user might be using.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -107,7 +107,7 @@ In development environment please use [ngrok](https://ngrok.com/) with https pro
 
 ## Customization
 
-We built Faceuth to help you quickly integrate contact form in your application. However, we don't want to be in your way when you need to customize it.
+We built Faceauth to help you quickly integrate form in your application. However, we don't want to be in your way when you need to customize it.
 
 Since Faceauth is an Rails engine, all its views are packaged inside the gem. These views will help you get started, but after some time you may want to change them. If this is the case, you just need to invoke the following generator, and it will copy all views to your application:
 
