@@ -103,7 +103,7 @@ Start using the gem 🙂
 
 **Note:**
 
-In development environment please use [ngrok](https://ngrok.com/) with https protocol. As per the security standards & protocols access to microphones & webcames are allowed only through secure channel.
+In development environment please use [ngrok](https://ngrok.com/) with https protocol. As per the security standards & protocols access to microphones & webcames are allowed only through a secure channel.
 
 ## Customization
 
