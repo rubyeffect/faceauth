@@ -1,9 +1,11 @@
 module Configuration
 
+ #Initializing the configuration module
  def configuration
    yield self
  end
 
+ #Method to define configuration variaables & assign values provied.
  def define_setting(name, default = nil)
    class_variable_set("@@#{name}", default)
    define_class_method "#{name}=" do |value|
@@ -16,6 +18,7 @@ module Configuration
 
  private
 
+   #Method provides valid defenition for class type of variables.
    def define_class_method(name, &block)
      (class << self; self; end).instance_eval do
        define_method name, &block

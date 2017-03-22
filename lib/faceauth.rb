@@ -5,8 +5,7 @@ require "faceauth/gem_dependencies"
 
 module Faceauth
 	extend Configuration
-
-  # default configuration
+  # setting up default configuration
   define_setting :model_name, "user"
   define_setting :uploader_name, "carrierwave"
   define_setting :redirect_url,   "root_path"

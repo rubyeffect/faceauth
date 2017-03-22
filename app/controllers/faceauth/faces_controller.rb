@@ -2,12 +2,19 @@ require_dependency "faceauth/application_controller"
 
 module Faceauth
   class FacesController < ApplicationController
-    MODEL = Faceauth.model_name.camelize.constantize
     skip_before_filter :verify_authenticity_token
+
+
+    #Reading configuration settings to identify model being used in devise configuration to manage users base.
+    MODEL = Faceauth.model_name.camelize.constantize
+      
+    #Initializing user object
     def new
       @user = MODEL.new
     end
 
+    # This method handles the picture recieved from Webcam. 
+    # Saves the picture and invoke facial recongition system by comparing two pictures by identifying the user. 
     def create
       @user = MODEL.find_by(Faceauth.email_column.to_sym => params[:email])
       data = request.raw_post

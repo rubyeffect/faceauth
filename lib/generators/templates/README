@@ -2,7 +2,7 @@
 
 Some setup you must do manually if you haven't yet:
 
-  1. Create a migration and add two column names: user_picture & last_sign_in_picture to your devise user model which you are using to store user login information
+  1. Create a migration and add two column names: "user_picture" & "last_sign_in_picture" to your devise user model which you are using to store user login information
 
      Run the migrations: rails db:migrate
 
@@ -12,14 +12,14 @@ Some setup you must do manually if you haven't yet:
 
      (NOTE: You may mount it at any path, not just "/")
 
-  3. Ensure you have set 'findface_api_key' and 'redirect_url' in config/initializers/faceauth.rb
+  3. Ensure you have set "findface_api_key" and "redirect_url" in config/initializers/faceauth.rb
   
      # config.findface_api_key = "YOUR_API_KEY"
      # config.redirect_url = "root_path" #By default, the option takes root_path of your rails application. 
 
   5. If you wish to pass your custom model name & column names, please set the names using
 
-     # config.model_name = :your_model_name (Default is 'User')
+     # config.model_name = "your_model_name" (Default is 'User')
      # config.signup_picture_column = "custom_column_name" (Default is 'user_picture')
      # config.signin_picture_column = "custom_column_name" (Default is 'last_sign_in_picture')
 

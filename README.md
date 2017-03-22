@@ -75,13 +75,13 @@ The options available are:
 
 | Option                    | Description                                                                         | Default Values                              |
 | -----------------         | -------------------------------                                                     | --------------------------------            |
-| `model_name`              | String to set devise user model .                                                   | 'user'                                      |
-| `uploader_name`           | String to define attachments plugin used to store images.                           | 'carrierwave' or 'paperclip'                |
-| `redirect_url`            | String to provide location details for taking user after successful authentication. | 'root_path'                                 |
-| `findface_api_key`        | String to set Findface API Key.                                                     | 'Findface API key'                          |
-| `email_column`            | set column name where user email is stored                                          | 'email'                                     |
-| `signup_picture_column`   | set column name where user picture is stored                                        | 'user_picture'                              |
-| `signin_picture_column`   | set column name where user picture is stored recorded from faceauth sign in page    | 'last_sign_in_picture'                      |
+| `model_name`              | String to set devise user model .                                                   | "user"                                      |
+| `uploader_name`           | String to define attachments plugin used to store images.                           | "carrierwave" or "paperclip"                |
+| `redirect_url`            | String to provide location details for taking user after successful authentication. | "root_path"                                 |
+| `findface_api_key`        | String to set Findface API Key.                                                     | "Findface API key"                          |
+| `email_column`            | set column name where user email is stored                                          | "email"                                     |
+| `signup_picture_column`   | set column name where user picture is stored                                        | "user_picture"                              |
+| `signin_picture_column`   | set column name where user picture is stored recorded from faceauth sign in page    | "last_sign_in_picture"                      |
 
 
 Ensure you have set 'findface_api_key' and 'redirect_url' in config/initializers/faceauth.rb
@@ -93,9 +93,9 @@ config.redirect_url = "root_path" #By default, the option takes root_path of you
 If you wish to pass your custom model name & column names, please set the names using
 
 ```ruby
-config.model_name = 'your_model_name' 
-config.signup_picture_column = :custom_column_name
-config.signin_picture_column = :custom_column_name                                  
+config.model_name = "your_model_name" 
+config.signup_picture_column = "custom_column_name"
+config.signin_picture_column = "custom_column_name"                                  
 ```
 
 Start using the gem 🙂
