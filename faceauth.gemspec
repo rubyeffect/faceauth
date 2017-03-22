@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Faceauth::VERSION
   s.authors     = ["Sam"]
   s.email       = ["sandeep@rubyeffect.com"]
-  s.homepage    = "http://rubyeffect.com"
+  s.homepage    = "https://github.com/rubyeffect/faceauth"
   s.summary     = %q{A rails plugin that eliminates the use of passwords to sign replacing the medium with Human face}
   s.description = %q{A simple rails engine to implement authentication using Facial recognition system}
   s.license     = "MIT"
