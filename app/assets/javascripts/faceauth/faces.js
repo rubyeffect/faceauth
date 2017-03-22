@@ -157,6 +157,7 @@ $(function() {
             $(".alert").fadeTo(2000, 500).slideUp(500, function() {
                 $(".alert").slideUp(500);
             });
+            $("#upload_result").removeClass("alert alert-danger");
         }
 
         var generate_validation_messages = function(message) {
