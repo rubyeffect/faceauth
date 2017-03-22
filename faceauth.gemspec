@@ -7,10 +7,10 @@ require "faceauth/version"
 Gem::Specification.new do |s|
   s.name        = "faceauth"
   s.version     = Faceauth::VERSION
-  s.authors     = ["Sam"]
-  s.email       = ["sandeep@rubyeffect.com"]
+  s.authors     = ["Sandeep Mallela a.k.a Sam"]
+  s.email       = ["opensource@rubyeffect.com", "sandeep@rubyeffect.com"]
   s.homepage    = "https://github.com/rubyeffect/faceauth"
-  s.summary     = %q{A rails plugin that eliminates the use of passwords to sign replacing the medium with Human face}
+  s.summary     = %q{A rails plugin that eliminates the use of passwords to sign in replacing the medium with Human face}
   s.description = %q{A simple rails engine to implement authentication using Facial recognition system}
   s.license     = "MIT"
 

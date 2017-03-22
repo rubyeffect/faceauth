@@ -2,8 +2,8 @@ module Faceauth
   class Authenticate 
     class << self
 
-      #This method is responsibile to run comparisions between user picture & picture submitted from webcam. 
-      #Servers the binary verification result.
+      #This method is responsibile for running comparisons between user picture & picture submitted during sign in process. 
+      #It servers the binary verification result.
       def login(user, request_uri)
         Findface.api_key = Faceauth.findface_api_key
         begin  

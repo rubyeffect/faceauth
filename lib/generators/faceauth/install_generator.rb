@@ -4,7 +4,7 @@ module Faceauth
       source_root File.expand_path("../../templates", __FILE__)
       desc "Creates a Conschedule initializer and copy migration file to your application."
 
-      #Method to generates a initializer configuration files with default configuration variables.
+      #Method to generate a initializer configuration file with default configuration variables available.
       def copy_initializer
         copy_file "initializer.rb", "config/initializers/faceauth.rb"
       end

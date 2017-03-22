@@ -9,14 +9,14 @@ module Faceauth
       end 
 
       protected
-        #Method which looks up plugin views & exclude certain views based up on the alias option invoked.
+        #Method that looks up for plugin views & exclude certain views based up on the alias option provided.
         def view_directory(name)
           directory "faceauth/faces", "app/views/faceauth/faces", exclude_pattern: /index|_faces/  if name.to_s == "form"
         end
     end
 
     class ViewsGenerator < Rails::Generators::Base #:nodoc:
-      #This generator module is responsbile accessing templates and copying them to parent rails application.
+      #This generator module is responsbile for accessing plugin templates and copying them to parent rails application.
       include ViewPathTemplates
       source_root File.expand_path("../../../../app/views", __FILE__)
       desc "Copies Faceauth views to your application."
