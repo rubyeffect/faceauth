@@ -1,0 +1,22 @@
+<div class="faceauth-signin-form">
+  <h2>Log in using your face</h2>
+  <strong>Note:</strong> Please ensure to have proper lighting in your environment before taking a snap.
+  <div id="upload_status"></div>
+  <div id="upload_result"></div>
+  * Email: <input type="email" name="email" id="user_email"><br>
+  <div id="camera">
+    <div class="placeholder">
+      Your browser does not support camera access.<br>
+      We recommend
+      <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>
+      &mdash; modern, secure, fast browser from Google.<br>
+      It's free.
+    </div>
+  </div><br>
+  <button id="take_snapshots" class="btn btn-success">Take a snap</button>
+  <button id="discard_snapshot" class="btn btn-danger">Discard snapshot</button>
+  <button id="upload_snapshot" class="btn btn-default">Sign In</button>
+  <%=image_tag("/assets/faceauth/loader.gif", id: "upload_loader", style: "display:none;")%>
+  <br>
+  <div id="snapshots"></div>
+</div>

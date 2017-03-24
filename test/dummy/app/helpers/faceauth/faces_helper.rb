@@ -1,0 +1,2 @@
+module Faceauth::FacesHelper
+end
