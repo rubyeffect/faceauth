@@ -12,3 +12,9 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+#Testing
+gem "rspec-rails"
+gem "factory_girl_rails"
+gem "mysql2"
+gem 'rails-controller-testing'
